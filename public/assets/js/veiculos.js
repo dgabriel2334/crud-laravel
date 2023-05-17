@@ -26,22 +26,22 @@ $(document).ready(function() {
         var formData = new FormData(this);
         var inputImagem = document.getElementById('imagem');
         var arquivoImagem = inputImagem.files[0];
+        var id = $('#veiculo_id').val();
         formData.append('imagem', arquivoImagem);   
-        saveVeiculo(formData);
+        saveVeiculo(formData, id);
     });
 });
 
-function saveVeiculo(data) {
-    var url = data.veiculo_id > 0 ? 'veiculos/' + data.veiculo_id : 'veiculos';
+function saveVeiculo(data, id) {
+    var url = id > 0 ? 'veiculos/' + id : 'veiculos';
     $.ajax({
         url: url,
         type: "POST",
-        // dataType: "json",
         data: data,
         processData: false,
         contentType: false,
         success: function(res) {
-            // $('#successModal').modal('show');    
+            $('#successModal').modal('show');    
         }
     });
 }
@@ -131,6 +131,7 @@ function getVeiculoData(id) {
             $('#veiculo-categoria-vl_semana').text(moedaToBr(res.veiculo_categoria_vl_semana));
             $('#veiculo-categoria-vl_mes').text(moedaToBr(res.veiculo_categoria_vl_mes));
             $('#veiculo-observacoes').text(res.veiculo_observacoes);
+            $('#veiculo-imagem').attr('src', res.veiculo_image);
         }
     });
 }

@@ -15,5 +15,16 @@
     <div class="container">
         @yield('content')
     </div>
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <h4>Locadora de Veículos</h4>
+              <p>Endereço: Av. Exemplo, 123 - Cidade, Estado</p>
+              <p>Telefone: (00) 1234-5678</p>
+            </div>
+          </div>
+        </div>
+      </footer>
 </body>
 </html>

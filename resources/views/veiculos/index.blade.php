@@ -45,13 +45,13 @@
 {{-- Modal para read --}}
 <div class="modal fade" id="modal-veiculo-read" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detalhes do Veículo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalhes do Veículo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
                 <p><strong>Nome: </strong><span id="veiculo-nome"></span></p>
                 <p><strong>Montadora: </strong><span id="veiculo-montadora"></span></p>
@@ -63,6 +63,8 @@
                 <p><strong>Valor/semana: </strong><span id="veiculo-categoria-vl_semana"></span></p>
                 <p><strong>Valor/mes: </strong><span id="veiculo-categoria-vl_mes"></span></p>
                 <p><strong>Observações: </strong><span id="veiculo-observacoes"></span></p>
+                <p><strong>Imagem:</strong></p>
+                <img id="veiculo-imagem" src="" alt="Imagem do veículo">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -84,7 +86,7 @@
             <div class="modal-body">
                 <form id="veiculos-create" action="save" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input required type="text" hidden id="veiculo_id" value="0">
+                    <input type="text" hidden id="veiculo_id" value="0">
                     <div class="form-group">
                     <label for="nome">Montadora</label>
                     <select required id="montadora" name="montadora"  class="form-control">
@@ -151,6 +153,7 @@
     </div>
     </div>
 </div>
+
 <script src="assets/js/veiculos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
 @endsection

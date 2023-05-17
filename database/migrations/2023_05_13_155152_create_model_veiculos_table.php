@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('descricao')->nullable();
             $table->text('observacoes')->nullable();
             $table->integer('fk_categoria')->unsigned();
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->foreign('fk_categoria')->references('id')->on('veiculos_categoria')->onDlete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();

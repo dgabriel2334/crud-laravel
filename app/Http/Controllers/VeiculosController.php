@@ -23,9 +23,10 @@ class VeiculosController extends Controller
     public function index(Request $request)
     {
         $sortBy = $request->input('sortBy') ?? 'id';
-        $categorias = $this->_objVeiculoCategoria->all()->sortBy($sortBy);
+        $veiculos = $this->_objVeiculo->all()->sortBy($sortBy);
+        $categorias = $this->_objVeiculoCategoria->all();
 
-        return view('categorias/index', compact('categorias'));
+        return view('veiculos/index', compact('veiculos', 'categorias'));
 
     }
 
@@ -34,21 +35,21 @@ class VeiculosController extends Controller
      */
     public function store(Request $request)
     {
-
+        $directory = '';
         if ($request->hasFile('imagem')) {
             $imagem = $request->file('imagem');
+            $directory = 'img/upload/' . $imagem->hashName();
             $imagem->move('img/upload', $imagem->hashName());
         }
-        exit;
 
         $this->_objVeiculo->create([
             'name' => $request->veiculo_nome,
+            'placa' => $request->placa,
             'montadora' => $request->montadora,
             'descricao' => $request->descricao,
             'observacoes' => $request->observacoes,
             'fk_categoria' => $request->categoria,
-            'fk_categoria' => $request->categoria,
-            // 'image' => $request->image,
+            'image' => $directory,
         ]);
 
 
@@ -61,17 +62,23 @@ class VeiculosController extends Controller
      */
     public function show($id)
     {
-        $categoria = $this->_objVeiculoCategoria->find($id);
+        $veiculo = $this->_objVeiculo->find($id);
+        $categoria = $veiculo->find($veiculo->id)->relCategoria;
 
         return Response::json([
-            'status' => 'success',
-            'categoria_id' => $categoria->id,
-            'categoria_nome' => $categoria->name,
-            'categoria_vl_hora' => $categoria->vl_hora,
-            'categoria_vl_diaria' => $categoria->vl_diaria,
-            'categoria_vl_semana' => $categoria->vl_semana,
-            'categoria_vl_mes' => $categoria->vl_mes,
-            'message' => ''
+            'veiculo_id' => $veiculo->id,
+            'veiculo_nome' => $veiculo->name,
+            'veiculo_montadora' => $veiculo->montadora,
+            'veiculo_placa' => $veiculo->placa,
+            'veiculo_descricao' => $veiculo->descricao,
+            'veiculo_observacoes' => $veiculo->observacoes,
+            'veiculo_image' => $veiculo->image,
+            'veiculo_categoria_id' => $categoria->id,
+            'veiculo_categoria_nome' => $categoria->name,
+            'veiculo_categoria_vl_hora' => $categoria->vl_hora,
+            'veiculo_categoria_vl_diaria' => $categoria->vl_diaria,
+            'veiculo_categoria_vl_semana' => $categoria->vl_semana,
+            'veiculo_categoria_vl_mes' => $categoria->vl_mes,
         ]);
     }
 
@@ -80,12 +87,22 @@ class VeiculosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->_objVeiculoCategoria->where(['id' => $id])->update([
-            'name' => $request->name,
-            'vl_hora' => $request->valor_hora,
-            'vl_diaria' => $request->valor_diaria,
-            'vl_mes' => $request->valor_mes,
-            'vl_semana' => $request->valor_semana
+        $veiculo = $this->_objVeiculo->find($id);
+        $directory = $veiculo->image;
+
+        if ($request->hasFile('imagem')) {
+            $imagem = $request->file('imagem');
+            $directory = 'img/upload/' . $imagem->hashName();
+            $imagem->move('img/upload', $imagem->hashName());
+        }
+
+        $this->_objVeiculo->where(['id' => $id])->update([
+            'name' => $request->veiculo_nome,
+            'montadora' => $request->montadora,
+            'descricao' => $request->descricao,
+            'observacoes' => $request->observacoes,
+            'fk_categoria' => $request->categoria,
+            'image' => $directory
         ]);
 
         return Response::json(['status' => 'success', 'message' => 'Criado com sucesso!']);
@@ -96,11 +113,7 @@ class VeiculosController extends Controller
      */
     public function destroy(string $id)
     {
-        if (count($this->_objVeiculo->where('fk_categoria', $id)->get()) > 0) {
-            return Response::json(['status' => 'error', 'message' => 'Erro ao apagar! Existem veículos nesta categoria, considere apagar os veículos primeiro!']);
-        }
-
-        if (!$this->_objVeiculoCategoria->destroy($id)) {
+        if (!$this->_objVeiculo->destroy($id)) {
             return Response::json(['status' => 'error', 'message' => 'Erro ao apagar']);
         }
 

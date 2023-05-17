@@ -8,6 +8,7 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -20,10 +21,13 @@
           <img src="img/creta.jpg" class="d-block w-100" alt="Carro 3">
         </div>
         <div class="carousel-item">
-          <img src="img/hb20.webp" class="d-block w-100" alt="Carro 3">
+          <img src="img/hb20.webp" class="d-block w-100" alt="Carro 4">
         </div>
         <div class="carousel-item">
-          <img src="img/veloster.webp" class="d-block w-100" alt="Carro 3">
+          <img src="img/veloster.webp" class="d-block w-100" alt="Carro 5">
+        </div>
+        <div class="carousel-item">
+          <img src="img/tcross.webp" class="d-block w-100" alt="Carro 5">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -50,36 +54,9 @@
         <!-- Aqui você pode adicionar o conteúdo sobre os veículos -->
       </div>
     </section>
-
-    <section id="section-contato" class="py-5">
-        <div class="container">
-          <h2>Entre em Contato</h2>
-          <!-- Aqui você pode adicionar o formulário de contato ou outras informações de contato -->
-        </div>
-      </section>
-    
-      <footer class="bg-dark text-light py-4">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <h4>Locadora de Veículos</h4>
-              <p>Endereço: Av. Exemplo, 123 - Cidade, Estado</p>
-              <p>Telefone: (00) 1234-5678</p>
-            </div>
-            <div class="col-lg-6">
-              <h4>Navegação</h4>
-              <ul class="list-unstyled">
-                <li><a href="#section-home" class="text-light">Início</a></li>
-                <li><a href="#section-veiculos" class="text-light">Veículos</a></li>
-                <li><a href="#section-contato" class="text-light">Contato</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
-    
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
+     
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 @endsection

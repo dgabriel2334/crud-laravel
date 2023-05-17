@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ModelVeiculos extends Model
 {
     protected $table = 'veiculos';
-    protected $fillable = ['name', 'montadora', 'placa', 'fk_categoria', 'descricao', 'observacoes', 'created_at'];
+    protected $fillable = ['name', 'montadora', 'placa', 'image', 'fk_categoria', 'descricao', 'observacoes', 'created_at'];
 
     /**
      * Relatioship from Veiculos and VeiculosCategoria
