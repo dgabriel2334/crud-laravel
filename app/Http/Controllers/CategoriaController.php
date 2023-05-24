@@ -6,6 +6,7 @@ use Response;
 use Illuminate\Http\Request;
 use App\Models\Veiculos\ModelVeiculos;
 use App\Models\Veiculos\ModelVeiculosCategoria;
+use App\Http\Controllers\UserController;
 
 class CategoriaController extends Controller
 {
@@ -22,11 +23,14 @@ class CategoriaController extends Controller
      */
     public function index(Request $request)
     {
+        if (!UserController::isLogged()) {
+            return redirect('/login');
+        }
+
         $sortBy = $request->input('sortBy') ?? 'id';
         $categorias = $this->_objVeiculoCategoria->all()->sortBy($sortBy);
 
         return view('categorias/index', compact('categorias'));
-
     }
 
     /**
@@ -43,9 +47,7 @@ class CategoriaController extends Controller
             'created_at' => date("Y-m-d H:i:s")
         ]);
 
-
         return Response::json(['status' => 'success', 'message' => 'Criado com sucesso!']);
-
     }
 
     /**

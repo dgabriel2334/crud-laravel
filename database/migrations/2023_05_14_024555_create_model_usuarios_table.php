@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('status');
-            $table->integer('fk_perfil')->unsigned();
+            $table->integer('fk_perfil')->unsigned()->nullable();
             $table->foreign('fk_perfil')->references('id')->on('usuario_perfil')->onDlete('cascade')->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();

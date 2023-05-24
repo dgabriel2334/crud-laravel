@@ -64,7 +64,7 @@
                 <p><strong>Valor/mes: </strong><span id="veiculo-categoria-vl_mes"></span></p>
                 <p><strong>Observações: </strong><span id="veiculo-observacoes"></span></p>
                 <p><strong>Imagem:</strong></p>
-                <img id="veiculo-imagem" src="" alt="Imagem do veículo">
+                <img class="m-auto d-block mx-auto border border-dark" id="veiculo-imagem" src="" alt="Imagem do veículo">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

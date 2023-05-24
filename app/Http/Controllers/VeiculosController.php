@@ -22,6 +22,10 @@ class VeiculosController extends Controller
      */
     public function index(Request $request)
     {
+        if (!UserController::isLogged()) {
+            return redirect('/login');
+        }
+        
         $sortBy = $request->input('sortBy') ?? 'id';
         $veiculos = $this->_objVeiculo->all()->sortBy($sortBy);
         $categorias = $this->_objVeiculoCategoria->all();

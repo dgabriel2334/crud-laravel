@@ -13,8 +13,11 @@
                     <a class="nav-link" href="categorias">Categorias</a>
                 </li>
                 <li class="nav-item">
-            <a class="nav-link" href="usuarios">Usuários</a>
-            </li>
+                    <a class="nav-link" href="usuarios">Usuários</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logoff">Logoff</a>
+                </li>
         </ul>
         </div>
     </nav>
