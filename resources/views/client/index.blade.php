@@ -37,11 +37,11 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="start-date">Data de Início</label>
-                <input type="date" class="form-control" id="start-date" required>
+                <input type="date" min="<?php echo date('Y-m-d'); ?>" class="form-control" id="start-date" required>
               </div>
               <div class="form-group col-md-6">
                 <label for="end-date">Data de Fim</label>
-                <input type="date" class="form-control" id="end-date" required>
+                <input type="date" min="<?php echo date('Y-m-d'); ?>" class="form-control" id="end-date" required>
               </div>
             </div>
             <div class="form-row">
