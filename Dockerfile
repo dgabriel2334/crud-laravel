@@ -15,12 +15,17 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
+COPY .htaccss.example /var/www/html/.htaccss
+
 RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 
 COPY . /var/www/html
 
+COPY .env.example /var/www/html/.env
+RUN composer clear-cache
+RUN composer self-update
 RUN composer install --no-interaction
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
