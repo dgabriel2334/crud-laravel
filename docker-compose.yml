@@ -2,15 +2,11 @@ version: '3'
 services:
     app:
         build:
-            context: ./install/docker/php/8.2
+            context: .
             dockerfile: Dockerfile
-        image: sail-8.2/app
         container_name: laravel
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
         ports:
             - '8000:80'
-            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         environment:
             LARAVEL_SAIL: 1
             XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
