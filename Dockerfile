@@ -28,6 +28,8 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 COPY install/docker/php/8.2/apache.conf /etc/apache2/sites-available/000-default.conf
 
+RUN php artisan migrate
+
 EXPOSE 80
 
 CMD ["apache2-foreground"]

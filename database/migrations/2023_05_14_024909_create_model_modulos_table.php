@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('modulos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('route')->unique();
+            $table->increments('id')->nullable();
+            $table->string('name');
+            $table->string('route');
             $table->string('resource');
             $table->text('description');
             $table->integer('parent')->unsigned();
