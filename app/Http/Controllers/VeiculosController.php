@@ -17,6 +17,7 @@ class VeiculosController extends Controller
         $this->_objVeiculo = new ModelVeiculos();
         $this->_objVeiculoCategoria = new ModelVeiculosCategoria();
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -56,9 +57,7 @@ class VeiculosController extends Controller
             'image' => $directory,
         ]);
 
-
         return Response::json(['status' => 'success', 'message' => 'Criado com sucesso!']);
-
     }
 
     /**
@@ -127,9 +126,9 @@ class VeiculosController extends Controller
     /**
      * retorna o valor float formatado em real.
      */
-    public static function moedaToBr(float $valor): string {
+    public static function moedaToBr(float $valor): string 
+    {
         $valorFormatado = number_format($valor, 2, ',', '.');
-        
         $valorFormatado = 'R$ ' . $valorFormatado;
         
         return $valorFormatado;
