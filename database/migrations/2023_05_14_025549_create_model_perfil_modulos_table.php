@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('perfil_modulos', function (Blueprint $table) {
-            $table->increments('id')->nullable();
+            $table->increments('id');
             $table->integer('fk_perfil')->unsigned();
             $table->integer('fk_usuario')->unsigned();
             $table->foreign('fk_perfil')->references('id')->on('usuario_perfil')->onDlete('cascade')->onUpdate('cascade');
